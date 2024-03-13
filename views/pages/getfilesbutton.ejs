@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <form action="/record/getallfiles" method="post" id="get-form">
+
+                <input type="submit" id="form_submit" value="Get files" />
+            </form>
+
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        $("#form_submit").click((e) => {
+            e.preventDefault();
+            // console.log("hii");
+            const data = $("#get-form").serialize();
+            $.ajax({
+                url: "/record/getallfiles",
+                data: data,
+                context: document.body,
+                method: "GET",
+            }).done(function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>

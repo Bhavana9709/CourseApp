@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <form action="/record/registered" method="post" id="register-form">
+                <% message %>
+                    <!-- <h3>Create User</h3> -->
+                    <label>Firstname :</label>
+
+                    <input type="text" name="firstname" placeholder="firstname" required><br><br>
+                    <label>Lastname :</label>
+
+                    <input type="text" name="lastname" placeholder="lastname" required><br><br>
+                    <label>Username :</label>
+
+                    <input type="text" name="username" placeholder="username" required><br><br>
+
+                    <label>Email : &nbsp; &nbsp; &nbsp; &nbsp;
+                    </label>
+
+                    <input type="email" name="email" placeholder="email" required><br><br>
+                    <label>Password :</label>
+
+                    <input type="text" name="password" placeholder="password" required> <br><br>
+                    <!-- <label >Confirm Password :</label> -->
+
+                    <!-- <input type="password" name="confirmpassword" placeholder="confirmpassword" required><br><br> -->
+                    <label>Mobile : &nbsp; &nbsp;</label>
+                    <input type="text" name="mobile" placeholder="Mobile" required> <br><br>
+                    <label>Course :&nbsp; &nbsp;</label>
+                    <input type="text" name="course" value="<%= data %>" readonly><br><br>
+
+                    <input type="submit" id="form_submit" value="Register">
+            </form>
+
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        $("#form_submit").click((e) => {
+            e.preventDefault();
+            const data = $("#register-form").serialize();
+            console.log(data);
+            if (data['password'] != data['confirmpassword']) {
+                alert("passwords do not match!!");
+
+            }
+            else {
+                $.ajax({
+                    url: "/record/registered",
+                    data: data,
+                    context: document.body,
+                    method: "POST",
+                }).done(function (data) {
+                    console.log(data);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

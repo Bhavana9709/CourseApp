@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- //include('../partials/head'); %>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="/stylesheets/style.css"> -->
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+        <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <style media="screen">
+            *,
+            *:before,
+            *:after {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: white;
+            }
+
+            .background {
+                width: 430px;
+                height: 520px;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+            }
+
+            .background .shape {
+                height: 200px;
+                width: 200px;
+                position: absolute;
+                border-radius: 50%;
+            }
+        </style>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- //include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <div class="background">
+                <!-- <div class="shape"></div>
+                <div class="shape"></div> -->
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link"
+                                href="http://localhost:3000/record/studenthome/<%= //data.username %>">Home <span
+                                    class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:3000/record/allcourses %>">Get Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:3000/record/allstudents %>">Get Students</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost:3000/record/getstat">stats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="http://localhost:3000/record/logout/<%= //data.username %>">Logout</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+
+            <center>
+                <h3 style="color:red" ;>View Statistics</h3>
+            </center>
+
+            <button id="stats" class="btn btn-dark">Get stats</button>
+
+
+            <div id="container"></div>
+            <script>
+                let cmpny1 = [];
+                $(document).ready(function () {
+                    //alert("hii");
+                    let cmpny = fetch("../record/getstatdata", {
+                        method: 'GET',
+
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+
+                    });
+
+                    cmpny.then(res => res.json()).then(d => {
+
+                        var arr = d.course;
+                        console.log(arr);
+                        for (let i = 0; i < arr.length; i++) {
+                            cmpny1.push(Object.values(arr[i]));
+                        }
+                        console.log(cmpny1);
+
+                        console.log(d)
+
+                    });
+
+
+                });
+
+            </script>
+            <script>
+                $("#stats").click((e) => {
+                    e.preventDefault();
+
+                    var chart = anychart.pie();
+                    // set the data
+                    chart.data(cmpny1);
+                    // set chart title
+                    chart.title("Blogs Distribution according to categories");
+                    // set the container element 
+                    chart.container("container");
+                    // initiate chart display
+                    chart.draw();
+                });
+
+
+
+
+            </script>
+
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>

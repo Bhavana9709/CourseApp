@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- //include('../partials/head'); %>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <style media="screen">
+            *,
+            *:before,
+            *:after {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: white;
+                background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fe%2Blearning%2Bbackground&psig=AOvVaw2cKWBwet-Xd2MYrx7N1IR8&ust=1652450655100000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCIDG1dyQ2vcCFQAAAAAdAAAAABAJ');
+            }
+
+            /* .background {
+                width: 430px;
+                height: 520px;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+            }
+
+            .background .shape {
+                height: 200px;
+                width: 200px;
+                position: absolute;
+                border-radius: 50%;
+            } */
+            .nav-link {
+                font-size: larger;
+            }
+        </style>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- //include('../partials/header'); %>
+    </header>
+
+    <main>
+
+        <div class="jumbotron">
+            <!-- <div class="background">
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div> -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link"
+                                href="http://localhost:3000/record/studenthome/<%= data.username %>">Home <span
+                                    class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="http://localhost:3000/record/studentprofile/<%= data.username %>">My Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="http://localhost:3000/record/studentcourses/<%= data.username %>">My Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                                href="http://localhost:3000/record/logout/<%= data.username %>">Logout</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <form class="form-inline my-2 my-lg-0" action="http://localhost:3000/record/registercourse" method="post"
+                id="course-form">
+                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"><br>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+
+                <div class="container" style="padding:10px">
+                    <!-- <div class="card" value="Html & CSS"> -->
+                    <!-- <input type="text" name="name"> -->
+
+                    <p><img src="http://localhost:3000/record/viewfile/filename/htmlcss.jpeg" alt="Avatar"
+                            style="width:20%; float:left"></p>
+                    <p style="float:right"></p> &nbsp;&nbsp;&nbsp;HTML is everywhere and more and
+                    its more important than ever. Its not only for web developers, having knowledge &nbsp;&nbsp;of HTML
+                    and
+                    how
+                    it works
+                    is beneficial in most careers.
+
+                    HyperText Markup Language, commonly abbreviated as &nbsp;&nbsp;HTML, is the standard markup language
+                    used to
+                    create
+                    web pages. Along with CSS, and JavaScript, HTML is a &nbsp;&nbsp;cornerstone technology used to
+                    create
+                    web
+                    pages as
+                    well as to create user interfaces for mobile and web applications.</p>
+                    <h3>&nbsp; HTML & CSS</h3>
+                    <input type="submit" id="course" value="Register now" style="width:20%" name="Html & CSS">
+                    <br> <br><!-- </div> -->
+
+
+                    <p><img src="http://localhost:3000/record/viewfile/filename/php.png" alt="Avatar"
+                            style="width:20%; float:left"></p>
+                    <p style="float:right; "></p>
+                    <p style="margin-left:10px;">&nbsp;&nbsp;PHP is a language written for the Web, quick to learn, easy
+                        to
+                        deploy and
+                        provides substantial functionality required &nbsp;&nbsp;for e-commerce. This PHP training course
+                        introduces the
+                        PHP framework and syntax and covers in depth the most &nbsp;&nbsp;important techniques used to
+                        build
+                        dynamic Web
+                        sites.</p><br>
+                    <h3>&nbsp;PHP</h3>
+                    <input type="submit" id="course" value="Register now" style="width:20%" name="PHP">
+                    <br> <br><!-- </div> -->
+
+
+                    <p><img src="http://localhost:3000/record/viewfile/filename/javascript.jpeg" alt="Avatar"
+                            style="width:20%; float:left"></p>
+                    <p style="float:right"></p>&nbsp;&nbsp;JavaScript (JS) is a lightweight, interpreted, or
+                    just-in-time
+                    compiled
+                    programming language with first-class &nbsp;&nbsp;functions. While it is most well-known as the
+                    scripting
+                    language for
+                    Web pages, many non-browser environments &nbsp;&nbsp;also use it, such as Node.js, Apache CouchDB
+                    and
+                    Adobe
+                    Acrobat.</p><br>
+                    <h3>&nbsp;JavaScript</h3>
+                    <input type="submit" id="course" value="Register now" name="Javascript" style="width:20%">
+                    <br> <br><!-- </div> -->
+
+
+                    <p><img src="http://localhost:3000/record/viewfile/filename/nodejs.jpeg" alt="Avatar"
+                            style="width:20%; float:left"></p>
+                    <p style="float:right"></p>&nbsp;&nbsp;Node.js is an open-source, cross-platform, back-end
+                    JavaScript
+                    runtime
+                    environment that runs on the V8 engine and &nbsp;&nbsp;executes JavaScript code outside a web
+                    browser.
+                    Node.js lets
+                    developers use JavaScript to write command line &nbsp;&nbsp;tools and for server-side
+                    scripting—running
+                    scripts
+                    server-side to produce dynamic web page content before the page &nbsp;&nbsp;is sent to the user's
+                    web
+                    browser.</p>
+
+                    <h3>&nbsp;Node JS</h3>
+                    <input type="submit" id="course" value="Register now" name="Node JS" style="width:20%">
+
+
+
+
+                    <br>
+                </div>
+        </div>
+        </form>
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="studentprofile/<%= data.username %>">My Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="studentcourses/<%= data.username %>">My Courses</a>
+                        </li>
+
+
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav> -->
+        <!-- <form action="/record/studentprofile" method="post" id="login-form">
+
+            <?= message ?><br><br><br>
+            <h2>Helloo <%=data.username%>
+            </h2>
+            <a style="display: flex; color:red; justify-content: flex-end;"
+                href="logout/<%= data.username %>">Logout</a>
+
+            <a href="studentprofile/<%= data.username %>" class="btn btn-primary ">My
+                Profile</a><br><br>
+            <a href="studentcourses/<%= data.username %>" class="btn btn-primary ">My
+                Courses</a><br><br>
+            <a style="text-align: right" href="http://localhost:3000/record/courses" class="btn btn-primary ">view
+                all
+                courses</a>
+            <div id="logout" style="align-items: right">
+                <br>
+            </div>
+        </form> -->
+
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        $("#course").click((e) => {
+            e.preventDefault();
+            console.log("hii");
+            const data = Object.keys(("#course").name);
+            // const data = $("#course-form").serialize();
+
+            $.ajax({
+                url: "/record/registercourse",
+                data: data,
+                context: document.body,
+                method: "POST",
+            }).done(function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+    <footer>
+        <%- //include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>

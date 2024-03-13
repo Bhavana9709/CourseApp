@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <form action="/record/uploaded" method="post" id="upload-form" enctype="multipart/form-data">
+
+                <h3>Upload file</h3>
+                <input type="file" name="fileuploading"><br><br>
+
+
+                <input type="submit" id="form_submit" value="upload">
+            </form>
+            <% if(message.length>0){ %>
+                <div class="alert">
+                    <%= message %>
+                </div>
+                <% } %>
+
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        $("#form_submit").click((e) => {
+            e.preventDefault();
+            // console.log("hii");
+            const data = $("#upload-form").serialize();
+            console.log(data);
+            $.ajax({
+                url: "/record/uploaded",
+                data: data,
+                context: document.body,
+                method: "POST",
+            }).done(function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>

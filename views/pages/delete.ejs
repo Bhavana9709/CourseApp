@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <form action="/record/deleted" method="post" id="delete-form">
+
+                <h3>Delete User</h3>
+                <input type="text" name="username" placeholder="username"><br><br>
+
+                <input type="submit" id="form_submit" value="Delete">
+            </form>
+
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        $("#form_submit").click((e) => {
+            e.preventDefault();
+            console.log("hii");
+            const data = $("#delete-form").serialize();
+            $.ajax({
+                url: "/record/deleted",
+                data: data,
+                context: document.body,
+                method: "POST",
+            }).done(function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>

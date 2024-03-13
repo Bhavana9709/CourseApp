@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- //include('../partials/head'); %>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+        <style media="screen">
+            *,
+            *:before,
+            *:after {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: #080710;
+            }
+
+            .background {
+                width: 430px;
+                height: 520px;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+            }
+
+            .background .shape {
+                height: 200px;
+                width: 200px;
+                position: absolute;
+                border-radius: 50%;
+            }
+
+            .shape:first-child {
+                background: linear-gradient(#1845ad,
+                        #23a2f6);
+                left: -80px;
+                top: -80px;
+            }
+
+            .shape:last-child {
+                background: linear-gradient(to right,
+                        #ff512f,
+                        #f09819);
+                right: -90px;
+                bottom: -80px;
+            }
+
+            form {
+                height: 520px;
+                width: 400px;
+                background-color: rgba(255, 255, 255, 0.13);
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+                border-radius: 10px;
+                backdrop-filter: blur(10px);
+                border: 2px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+                padding: 50px 35px;
+            }
+
+            form * {
+                font-family: 'Poppins', sans-serif;
+                color: #ffffff;
+                letter-spacing: 0.5px;
+                outline: none;
+                border: none;
+            }
+
+            form h3 {
+                font-size: 32px;
+                font-weight: 500;
+                line-height: 42px;
+                text-align: center;
+            }
+
+            label {
+                display: block;
+                margin-top: 30px;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            input {
+                display: block;
+                height: 50px;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.07);
+                border-radius: 3px;
+                padding: 0 10px;
+                margin-top: 8px;
+                font-size: 14px;
+                font-weight: 300;
+            }
+
+            ::placeholder {
+                color: #e5e5e5;
+            }
+
+            button {
+                margin-top: 50px;
+                width: 100%;
+                background-color: #ffffff;
+                color: #080710;
+                padding: 15px 0;
+                font-size: 18px;
+                font-weight: 600;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            form input[type=submit] {
+                margin-left: 1%;
+                background: rgb(34, 159, 201);
+                border: 1px solid #f4ab4c;
+                color: white;
+                text-shadow: 0 1px rgba(255, 255, 255, 0.3);
+            }
+
+
+            .social {
+                margin-top: 30px;
+                display: flex;
+            }
+
+            .social div {
+                background: red;
+                width: 150px;
+                border-radius: 3px;
+                padding: 5px 10px 10px 5px;
+                background-color: rgba(255, 255, 255, 0.27);
+                color: #eaf0fb;
+                text-align: center;
+            }
+
+            .social div:hover {
+                background-color: rgba(255, 255, 255, 0.47);
+            }
+
+            .social .fb {
+                margin-left: 25px;
+            }
+
+            .social i {
+                margin-right: 4px;
+            }
+        </style>
+
+</head>
+
+<body class="container">
+
+    <header>
+        <%- //include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <!-- <h3>Login!!</h3>
+                <input type="text" name="username" placeholder="username"><br><br>
+
+                <input type="password" name="password" placeholder="password"><br><br>
+                <input type="submit" id="form_submit" />
+            </form> -->
+            <!-- <form action="/record/stuauth" method="post" id="login-form" class="form-2">
+
+                <h1><span class="log-in">Log in</span> </h1>
+                <p class="float">
+                    <label for="login"><i class="icon-user"></i>Username</label>
+                    <input type="text" name="username" placeholder="Username ">
+                </p>
+                <p class="float">
+                    <label for="password"><i class="icon-lock"></i>Password</label>
+                    <input type="password" name="password" placeholder="Password" class="showpassword">
+                </p>
+                <p class="clearfix">
+                    <input type="submit" name="submit" value="Log in">
+                </p>
+            </form> -->
+            <div class="background">
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <form action="/record/stuauth" method="post" id="login-form" class="form-2">
+
+                <h3>Login Here</h3>
+
+                <label for="username">Username</label>
+                <input type="text" placeholder="Username" name="username">
+
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" name="password">
+                <br>
+                <!-- <a style="color:#37c7c0;" href="">forgot your password?</a> -->
+                <input type="submit" name="submit" value="Log in">
+                <!-- <p> Or</p> --><br>
+                <p> Don't have an account? <a style="color: #23a2f6"
+                        href="http://localhost:3000/record/studentsignup">Sign up</a></p>
+            </form>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        $("#form_submit").click((e) => {
+            e.preventDefault();
+            console.log("hii");
+            const data = $("#login-form").serialize();
+            $.ajax({
+                url: "/record/stuauth",
+                data: data,
+                context: document.body,
+                method: "POST",
+            }).done(function (data) {
+                console.log(data);
+            });
+        });
+    </script>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>

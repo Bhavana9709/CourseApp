@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <form action="/record/created" method="post" id="create-form">
+
+                <h3>Create User</h3>
+                <input type="text" name="username" placeholder="username"><br><br>
+                <input type="email" name="email" placeholder="email"><br><br>
+
+                <input type="password" name="password" placeholder="password"><br><br>
+                <label for="country">Country</label>
+
+                <select class="form-control" id="country-dropdown">
+                    <option value="">Select Country</option>
+                    <% for(var i=0; i< data.length; i++) {%>
+                        <option value="<%= i+1 %>">
+                            <%= data[i]%>
+                        </option>
+                        <% } %>
+                </select>
+                <!-- <label for="state">State</label>
+                <select class="form-control" id="state-dropdown">
+                </select> --><br>
+                <input type="submit" id="form_submit" value="create">
+            </form>
+
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        $("#form_submit").click((e) => {
+            e.preventDefault();
+            console.log("hii");
+            const data = $("#create-form").serialize();
+            $.ajax({
+                url: "/record/created",
+                data: data,
+                context: document.body,
+                method: "POST",
+            }).done(function (data) {
+                console.log(data);
+            });
+        });
+
+        $('#country-dropdown').on('change', function () {
+            var country_id = this.value;
+            console.log(country_id);
+            $("#state-dropdown").html('');
+            $.ajax({
+                url: "http://localhost:3000/record/states",
+                type: "POST",
+                data: {
+                    name: 'country',
+                    country_id: country_id,
+                },
+                dataType: 'json',
+                success: function (result) {
+                    $('#state-dropdown').html('<option value="">Select State</option>');
+                    $.each(result.states, function (key, value) {
+                        $("#state-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        });
+
+
+    </script>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>
